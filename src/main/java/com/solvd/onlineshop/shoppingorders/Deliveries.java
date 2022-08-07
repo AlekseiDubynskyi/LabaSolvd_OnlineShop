@@ -18,7 +18,9 @@ public class Deliveries implements ISendingOrder {
     private Product productID;
     private Date date;
 
-    public Deliveries() {}
+    public Deliveries() {
+
+    }
 
     public Deliveries(String deliveryID, ShoppingOrder orderID, Customer customerID, Product productID, Date date) {
         this.deliveryID = deliveryID;
