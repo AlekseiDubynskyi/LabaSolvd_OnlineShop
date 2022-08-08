@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Deliveries implements ISendingOrder {
-    final static Logger DeliveriesLogger = LogManager.getLogger(Deliveries.class);
+    private final static Logger DELIVERIES_LOGGER = LogManager.getLogger(Deliveries.class);
     private String deliveryID;
     private ShoppingOrder orderID;
     private Customer customerID;
@@ -99,13 +99,13 @@ public class Deliveries implements ISendingOrder {
     public void sendingOrder () {
         try {
             if (deliveryID != null)
-                DeliveriesLogger.info("Sending an order: " + orderID + " for " + customerID.getFirstName() +
+                DELIVERIES_LOGGER.info("Sending an order: " + orderID + " for " + customerID.getFirstName() +
                         customerID.getLastName() + " on " + date);
             else
-                DeliveriesLogger.info("Payment or transaction were not successful. Please try it again.");
+                DELIVERIES_LOGGER.info("Payment or transaction were not successful. Please try it again.");
             throw new InvalidSendingDelivery("Something goes wrong");
         } catch (InvalidSendingDelivery e) {
-            DeliveriesLogger.info("Order ID: " + orderID + ", customer ID: " + customerID.getFirstName() +
+            DELIVERIES_LOGGER.info("Order ID: " + orderID + ", customer ID: " + customerID.getFirstName() +
                     customerID.getLastName() + ", date: " + date);
         }
     }

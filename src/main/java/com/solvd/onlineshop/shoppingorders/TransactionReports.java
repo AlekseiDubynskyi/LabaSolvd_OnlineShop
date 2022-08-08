@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class TransactionReports implements ITransactionSuccess {
-    final static Logger ReportsLogger = LogManager.getLogger(TransactionReports.class);
+    private final static Logger REPORTS_LOGGER = LogManager.getLogger(TransactionReports.class);
     private String reportID;
     private Customer customerID;
     private ShoppingOrder orderID;
@@ -121,13 +121,13 @@ public class TransactionReports implements ITransactionSuccess {
     public boolean transactionSuccess (TransactionReports transactionReports) {
         try {
             if (transactionReports.success)
-                ReportsLogger.info("Transaction completed successfully. Transaction ID is: " +
+                REPORTS_LOGGER.info("Transaction completed successfully. Transaction ID is: " +
                         getReportID());
             else
-                ReportsLogger.info("Transaction was not successful. Please try again.");
+                REPORTS_LOGGER.info("Transaction was not successful. Please try again.");
             throw new InvalidTransactionException("Something goes wrong");
         } catch (InvalidTransactionException e) {
-            ReportsLogger.info("Report ID: " + reportID + ", customer ID: " + customerID + ", order ID" + orderID +
+            REPORTS_LOGGER.info("Report ID: " + reportID + ", customer ID: " + customerID + ", order ID" + orderID +
                     ", success: " + success);
         }
         return false;

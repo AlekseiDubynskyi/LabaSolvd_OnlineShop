@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Payment implements IPaymentSuccess {
-    final static Logger PaymentLogger = LogManager.getLogger(Payment.class);
+    private final static Logger PAYMENT_LOGGER = LogManager.getLogger(Payment.class);
     private int paymentID;
     private Customer customerID;
     private Date date;
@@ -86,12 +86,12 @@ public class Payment implements IPaymentSuccess {
     public boolean paymentSuccess (Payment payment) {
         try {
             if (payment.success)
-                PaymentLogger.info("Payment completed successfully. Thank you for buying our products!");
+                PAYMENT_LOGGER.info("Payment completed successfully. Thank you for buying our products!");
             else
-                PaymentLogger.info("Payment was not successful. Please try it again.");
+                PAYMENT_LOGGER.info("Payment was not successful. Please try it again.");
             throw new InvalidPaymentException("Something goes wrong");
         } catch (InvalidPaymentException e) {
-            PaymentLogger.info("Payment ID: " + paymentID + ", customer ID: " + customerID +
+            PAYMENT_LOGGER.info("Payment ID: " + paymentID + ", customer ID: " + customerID +
                     ", success: " + success);
         }
         return false;
