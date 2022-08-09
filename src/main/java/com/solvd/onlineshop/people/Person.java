@@ -50,7 +50,7 @@ public abstract class Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName.hashCode(), lastName.hashCode(),contact.hashCode());
+        return Objects.hash(firstName.hashCode(), lastName.hashCode(), contact.hashCode());
     }
 
     @Override

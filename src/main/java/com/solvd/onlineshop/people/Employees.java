@@ -41,7 +41,7 @@ public class Employees extends Person {
 
     @Override
     public String toString() {
-        return "Employee" + getFirstName() + " " + getLastName()+ '\''
+        return "Employee" + getFirstName() + " " + getLastName() + '\''
                 + ", contact = " + getContact() + '\''
                 + ", company = " + getCompany() + '\''
                 + ", position = " + getPosition() +

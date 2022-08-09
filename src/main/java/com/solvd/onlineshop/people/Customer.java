@@ -11,7 +11,8 @@ public class Customer extends Person implements IBuy, IOrder {
     private String customerID;
     private String address;
 
-    public Customer() {}
+    public Customer() {
+    }
 
     public Customer(String customerID, String address) {
         this.customerID = customerID;
@@ -19,7 +20,7 @@ public class Customer extends Person implements IBuy, IOrder {
     }
 
     public Customer(String firstName, String lastName, String contact, String customerID, String address) {
-        super (firstName, lastName, contact);
+        super(firstName, lastName, contact);
         this.customerID = customerID;
         this.address = address;
     }
@@ -42,7 +43,7 @@ public class Customer extends Person implements IBuy, IOrder {
 
     @Override
     public String toString() {
-        return "Customer" + getFirstName() + " " + getLastName()+ '\''
+        return "Customer" + getFirstName() + " " + getLastName() + '\''
                 + ", contact = " + getContact() + '\''
                 + ", customer ID = " + customerID + '\''
                 + ", address = " + address +
