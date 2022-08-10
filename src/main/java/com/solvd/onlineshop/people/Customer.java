@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Customer extends Person implements IBuy, IOrder {
-    final static Logger CustomerLogger = Logger.getLogger(String.valueOf(Customer.class));
+    private final static Logger CustomerLogger = Logger.getLogger(String.valueOf(Customer.class));
     private String customerID;
     private String address;
 

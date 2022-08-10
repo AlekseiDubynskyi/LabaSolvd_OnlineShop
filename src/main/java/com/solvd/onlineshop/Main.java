@@ -21,7 +21,11 @@ public class Main {
     public static void main(String[] args) {
        final Logger LOGGER = LogManager.getLogger(Main.class);
 
-       // Instances
+
+
+    }
+}
+   /*// Instances
         Country country = new Country("Canada");
         City city = new City("Alfred, Ontario", "K0B 1A0");
         Departments departments = new Departments("OnlineShop Department", "+14845219652", city,
@@ -40,5 +44,4 @@ public class Main {
         Deliveries deliveries = new Deliveries();
         Payment payment = new Payment();
         TransactionReports transactionReports = new TransactionReports();
-    }
-}
+        */
