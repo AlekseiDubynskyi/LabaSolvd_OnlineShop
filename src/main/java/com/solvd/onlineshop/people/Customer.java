@@ -4,10 +4,11 @@ import com.solvd.onlineshop.interfaces.IBuy;
 import com.solvd.onlineshop.interfaces.IOrder;
 
 import java.util.Objects;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Customer extends Person implements IBuy, IOrder {
-    private final static Logger CustomerLogger = Logger.getLogger(String.valueOf(Customer.class));
+    private final static Logger CUSTOMER_LOGGER = LogManager.getLogger(Customer.class);
     private String customerID;
     private String address;
 
@@ -41,13 +42,12 @@ public class Customer extends Person implements IBuy, IOrder {
         this.address = address;
     }
 
+
+
     @Override
     public String toString() {
-        return "Customer" + getFirstName() + " " + getLastName() + '\''
-                + ", contact = " + getContact() + '\''
-                + ", customer ID = " + customerID + '\''
-                + ", address = " + address +
-                '}';
+        return "{Customer: " + getFirstName() + " " + getLastName() + ", contact: " + getContact() +
+                ", customer ID: " + customerID + ", address: " + address + "}";
     }
 
     @Override
@@ -66,17 +66,17 @@ public class Customer extends Person implements IBuy, IOrder {
 
     @Override
     public void buy(Customer customer) {
-        CustomerLogger.info("I'm going to buy some products");
+        CUSTOMER_LOGGER.info("I'm going to buy some products");
     }
 
     @Override
     public void makeOrder(Customer customer) {
-        CustomerLogger.info("It's time to make an order!");
+        CUSTOMER_LOGGER.info("It's time to make an order!");
     }
 
     @Override
     public void cancelOrder(Customer customer) {
-        CustomerLogger.info("I need to cancel my order.");
+        CUSTOMER_LOGGER.info("I need to cancel my order.");
     }
 
 

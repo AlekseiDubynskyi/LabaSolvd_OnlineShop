@@ -23,16 +23,22 @@ public class City {
         this.name = name;
     }
 
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
     @Override
     public String toString() {
-        return "City{" + name + '\''
-                + ", postal code=" + postalCode +
-                '}';
+        return "{City: " + name + ", postal code: " + postalCode + "}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(),hashCode());
+        return Objects.hash(getName().hashCode(), getPostalCode().hashCode());
     }
 
     @Override

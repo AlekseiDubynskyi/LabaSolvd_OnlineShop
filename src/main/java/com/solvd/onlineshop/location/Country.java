@@ -1,6 +1,5 @@
 package com.solvd.onlineshop.location;
 
-import com.solvd.onlineshop.companies.Partners;
 import java.util.Objects;
 
 public class Country {
@@ -23,20 +22,12 @@ public class Country {
     }
 
     @Override
-    public String toString() {
-        return "Country {" + name + "}";
-    }
-
-    @Override
     public int hashCode() {
-        return Objects.hash(name.hashCode());
+        return Objects.hash(getName().hashCode());
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Country country = (Country) o;
-        return hashCode() == country.hashCode();
+    public String toString() {
+        return "{Country: " + getName() + "}";
     }
 }

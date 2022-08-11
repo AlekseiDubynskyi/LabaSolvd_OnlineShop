@@ -2,22 +2,24 @@ package com.solvd.onlineshop.people;
 
 import com.solvd.onlineshop.companies.Company;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Employees extends Person {
     private Company company;
-    private String position;
+    private List<String> position = new ArrayList<String>();
 
     public Employees() {
 
     }
 
-    public Employees(Company company, String position) {
+    public Employees(Company company, List<String> position) {
         this.company = company;
         this.position = position;
     }
 
-    public Employees(String firstName, String lastName, String contact, Company company, String position) {
+    public Employees(String firstName, String lastName, String contact, Company company, List<String> position) {
         super(firstName, lastName, contact);
         this.company = company;
         this.position = position;
@@ -31,21 +33,18 @@ public class Employees extends Person {
         this.company = company;
     }
 
-    public String getPosition() {
+    public List<String> getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(List<String> position) {
         this.position = position;
     }
 
     @Override
     public String toString() {
-        return "Employee" + getFirstName() + " " + getLastName() + '\''
-                + ", contact = " + getContact() + '\''
-                + ", company = " + getCompany() + '\''
-                + ", position = " + getPosition() +
-                '}';
+        return "{Employee" + getFirstName() + " " + getLastName() + ", contact: " + getContact()
+                + ", company: " + getCompany() + ", position: " + getPosition() + "}";
     }
 
     @Override
