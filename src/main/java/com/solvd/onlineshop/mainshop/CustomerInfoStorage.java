@@ -1,13 +1,18 @@
-package com.solvd.onlineshop;
+package com.solvd.onlineshop.mainshop;
 
+import com.solvd.onlineshop.Main;
 import com.solvd.onlineshop.location.City;
 import com.solvd.onlineshop.location.Country;
 import com.solvd.onlineshop.people.Customer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class CustomerInfoStorage extends Customer {
+    Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         HashSet<ArrayList> arrayCustomerInfoStorage = new HashSet<ArrayList>();
 
@@ -26,9 +31,6 @@ public class CustomerInfoStorage extends Customer {
         arrayCustomerInfoStorage.add(countries);
         arrayCustomerInfoStorage.add(cities);
 
-        System.out.println(customers);
-        System.out.println(countries);
-        System.out.println(cities);
         System.out.println(arrayCustomerInfoStorage);
     }
 }

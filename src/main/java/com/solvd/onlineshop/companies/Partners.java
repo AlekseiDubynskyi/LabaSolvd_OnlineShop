@@ -28,11 +28,8 @@ public class Partners extends Company {
 
     @Override
     public String toString() {
-        return "Company {" + getName() + '\''
-                + ", contact = " + getContact() + '\''
-                + ", city = " + getCity() + '\''
-                + ", partner ID = " + partnerID +
-                '}';
+        return "{Company: " + getName() + ", contact: " + getContact() + ", city = " + getCity() +
+                ", partner ID = " + partnerID +  "}";
     }
 
     @Override

@@ -1,56 +1,53 @@
 package com.solvd.onlineshop.shoppingorders;
 
-import com.solvd.onlineshop.location.City;
-import com.solvd.onlineshop.location.Country;
-import com.solvd.onlineshop.mainshop.OnlineShop;
-import com.solvd.onlineshop.people.Person;
+import com.solvd.onlineshop.Main;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
-public class ContactUsForm {
-    private OnlineShop nameCompany;
-    private Person firstname;
-    private Person lastname;
-    private ShoppingOrder orderID;
+public class ContactUsForm <T, U> {
+    private final static Logger CONTACT_FORM_LOGGER = LogManager.getLogger(ContactUsForm.class);
+    private T fullName;
+    private U formNumber;
 
     public ContactUsForm() {
 
     }
 
-    public ContactUsForm(OnlineShop nameCompany, Person firstname, Person lastname, ShoppingOrder orderID) {
-        this.nameCompany = nameCompany;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.orderID = orderID;
+    public ContactUsForm(T fullName, U formNumber) {
+        this.fullName = fullName;
+        this.formNumber = formNumber;
     }
 
-    public OnlineShop getNameCompany() {
-        return nameCompany;
+    public T getFullName() {
+        return fullName;
     }
 
-    public void setNameCompany(OnlineShop nameCompany) {
-        this.nameCompany = nameCompany;
+    public void setFullName(T fullName) {
+        this.fullName = fullName;
     }
 
-    public ShoppingOrder getOrderID() {
-        return orderID;
+    public U getFormNumber() {
+        return formNumber;
     }
 
-    public void setOrderID(ShoppingOrder orderID) {
-        this.orderID = orderID;
+    public void setFormNumber(U formNumber) {
+        this.formNumber = formNumber;
+    }
+
+    public void showFormInfo() {
+        CONTACT_FORM_LOGGER.info("Form info: " + fullName + " " + formNumber);
     }
 
     @Override
     public String toString() {
-        return "Contact Us Form{" + '\''
-                + " Shopping order = " + getOrderID() + '\''
-                + ", name =" + firstname + lastname +
-                '}';
+        return "ContactUsForm{ " + "Full Name: " + fullName + ", Form Number ID: " + formNumber + "}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nameCompany.hashCode(), firstname.hashCode(), lastname.hashCode(), orderID.hashCode());
+        return Objects.hash(fullName, formNumber);
     }
 
     @Override
