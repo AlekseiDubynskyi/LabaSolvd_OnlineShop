@@ -35,7 +35,7 @@ public class SignUp {
 
         final String fromEmail = "onlineshop.sending.message@gmail.com"; //requires valid gmail id
         // correct password for gmail id, passwd creates on gmail account after two-factor authentication
-        final String passwd = "iayeuldndrudnxqy";
+        final String passwd = "vbrvgdtajibtjsgr";
         final String toEmail = newUser.getEmail(); // user input email
 
         Properties props = new Properties();
