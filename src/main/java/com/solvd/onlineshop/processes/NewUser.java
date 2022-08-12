@@ -1,10 +1,10 @@
-package com.solvd.onlineshop.mainshop.login;
+package com.solvd.onlineshop.processes;
 
-public class Register {
+public class NewUser {
     private String firstName;
     private String lastName;
     private String password;
-    private long phoneNumber;
+    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -30,17 +30,16 @@ public class Register {
         this.password = password;
     }
 
-    public long getPhoneNumber() {
-        return phoneNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Register credentials {First name: " + firstName + ", last name: " + lastName +
-                ", password: " + password + ", phone number: " + phoneNumber + "}";
+        return "Dear " + firstName + " " + lastName + "!. Your account was successfully registered.";
     }
 }
