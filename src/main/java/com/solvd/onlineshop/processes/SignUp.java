@@ -61,25 +61,3 @@ public class SignUp {
         REGISTER_LOGGER.info(newUser.toString());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//TOP SECRET:password for mail OnlineShop_123456
