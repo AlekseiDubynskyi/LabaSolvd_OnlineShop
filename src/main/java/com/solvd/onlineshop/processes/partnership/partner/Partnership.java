@@ -1,6 +1,5 @@
-package com.solvd.onlineshop.processes;
+package com.solvd.onlineshop.processes.partnership.partner;
 
-import com.solvd.onlineshop.processes.partnership.partner.Partner;
 import com.solvd.onlineshop.processes.partnership.seller.Seller;
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
 import org.apache.logging.log4j.LogManager;

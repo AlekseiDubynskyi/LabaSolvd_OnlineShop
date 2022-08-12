@@ -1,7 +1,7 @@
 package com.solvd.onlineshop;
 
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
-import com.solvd.onlineshop.processes.Partnership;
+import com.solvd.onlineshop.processes.partnership.partner.Partnership;
 import com.solvd.onlineshop.processes.signingup.SignUp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
