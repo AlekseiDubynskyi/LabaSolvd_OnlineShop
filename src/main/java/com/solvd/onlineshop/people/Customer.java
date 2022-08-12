@@ -42,8 +42,6 @@ public class Customer extends Person implements IBuy, IOrder {
         this.address = address;
     }
 
-
-
     @Override
     public String toString() {
         return "{Customer: " + getFirstName() + " " + getLastName() + ", contact: " + getContact() +
