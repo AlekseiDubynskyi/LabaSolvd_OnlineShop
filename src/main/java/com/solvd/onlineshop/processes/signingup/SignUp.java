@@ -1,6 +1,5 @@
-package com.solvd.onlineshop.processes;
+package com.solvd.onlineshop.processes.signingup;
 
-import com.solvd.onlineshop.people.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,30 +12,30 @@ import java.util.*;
 public class SignUp {
     private static final Logger REGISTER_LOGGER = LogManager.getLogger(SignUp.class);
 
-    public static void registration() {
+    public static void Registration() {
         Scanner scanner = new Scanner(System.in);
-        NewUser newUser = new NewUser();
+        User user = new User();
 
         REGISTER_LOGGER.info("Enter First Name: ");
         String firstName = scanner.nextLine();
-        newUser.setFirstName(firstName);
+        user.setFirstName(firstName);
 
         REGISTER_LOGGER.info("Enter Last Name: ");
         String lastName = scanner.nextLine();
-        newUser.setLastName(lastName);
+        user.setLastName(lastName);
 
         REGISTER_LOGGER.info("Enter Password: ");
         String password = scanner.nextLine();
-        newUser.setPassword(password);
+        user.setPassword(password);
 
         REGISTER_LOGGER.info("Enter your email: ");
         String email = scanner.nextLine();
-        newUser.setEmail(email);
+        user.setEmail(email);
 
         final String fromEmail = "onlineshop.sending.message@gmail.com"; //requires valid gmail id
         // correct password for gmail id, passwd creates on gmail account after two-factor authentication
         final String passwd = "vbrvgdtajibtjsgr";
-        final String toEmail = newUser.getEmail(); // user input email
+        final String toEmail = user.getEmail(); // user input email
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
@@ -55,9 +54,10 @@ public class SignUp {
         Session session = Session.getDefaultInstance(props, auth);
         EmailUtil.sendEmail(session, toEmail, "Successfully registration on OnlineShop project!",
                 "We are very grateful to you for registering!\n" +
-                        "Have a good shopping in our store!\n" + "\n" +
+                        "Dear " + user.getFirstName() + " " + user.getLastName() +
+                        ", have a good shopping in our store!\n" + "\n" +
                         "Sincerely, OnlineShop.");
 
-        REGISTER_LOGGER.info(newUser.toString());
+        REGISTER_LOGGER.info(user.toString());
     }
 }

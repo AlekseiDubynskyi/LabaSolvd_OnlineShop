@@ -17,8 +17,8 @@ public class Departments extends Company {
         this.country = country;
     }
 
-    public Departments(String name, String contact, City city, String departmentID, Country country) {
-        super(name, contact, city);
+    public Departments(String name, String contact, String departmentID, Country country) {
+        super(name, contact);
         this.departmentID = departmentID;
         this.country = country;
     }
@@ -43,7 +43,6 @@ public class Departments extends Company {
     public String toString() {
         return "Department {" + getName() + '\''
                 + ", contact = " + getContact() + '\''
-                + ", city = " + getCity() + '\''
                 + ", department ID = " + departmentID + '\''
                 + ", country = " + country +
                 '}';
@@ -51,7 +50,7 @@ public class Departments extends Company {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName().hashCode(), getContact().hashCode(), getCity().hashCode(),
+        return Objects.hash(getName().hashCode(), getContact().hashCode(),
                 getDepartmentID().hashCode(), getCountry().hashCode());
     }
 

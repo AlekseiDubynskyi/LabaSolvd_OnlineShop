@@ -1,6 +1,6 @@
-package com.solvd.onlineshop.processes;
+package com.solvd.onlineshop.processes.signingup;
 
-public class NewUser {
+public class User {
     private String firstName;
     private String lastName;
     private String password;

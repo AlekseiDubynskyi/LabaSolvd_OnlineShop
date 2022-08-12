@@ -15,8 +15,8 @@ public class OnlineShop extends Company {
         this.licenseID = licenseID;
     }
 
-    public OnlineShop(String name, String contact, City city, String licenseID) {
-        super(name, contact, city);
+    public OnlineShop(String name, String contact, String licenseID) {
+        super(name, contact);
         this.licenseID = licenseID;
     }
 
@@ -32,14 +32,13 @@ public class OnlineShop extends Company {
     public String toString() {
         return "OnlineShop {" + getName() + '\''
                 + ", contact = " + getContact() + '\''
-                + ", city = " + getCity() + '\''
                 + ", license ID = " + licenseID +
                 '}';
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName().hashCode(), getContact().hashCode(), getCity().hashCode(),
+        return Objects.hash(getName().hashCode(), getContact().hashCode(),
                 getLicenseID().hashCode());
     }
 

@@ -1,8 +1,7 @@
 package com.solvd.onlineshop.mainshop;
 
-import com.solvd.onlineshop.companies.Sellers;
+import com.solvd.onlineshop.processes.partnership.seller.Seller;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -10,14 +9,14 @@ public class Product {
     private String productID;
     private Category categoryID;
     private String productName;
-    private Sellers name;
+    private Seller name;
     private Vector<Category> categories = new Vector<Category>();
 
     public Product() {
 
     }
 
-    public Product(String productID, Category categoryID, String productName, Sellers name,
+    public Product(String productID, Category categoryID, String productName, Seller name,
                    Vector<Category> categories) {
         this.productID = productID;
         this.categoryID = categoryID;
@@ -50,11 +49,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public Sellers getName() {
+    public Seller getName() {
         return name;
     }
 
-    public void setName(Sellers name) {
+    public void setName(Seller name) {
         this.name = name;
     }
 
