@@ -1,6 +1,5 @@
 package com.solvd.onlineshop.location;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class City {
