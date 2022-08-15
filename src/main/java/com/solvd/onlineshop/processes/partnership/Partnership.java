@@ -56,8 +56,15 @@ public class Partnership {
         PARTNERSHIP_LOGGER.info("Enter your Contact: ");
         contactSeller = scanner.nextLine();
 
-        PARTNERSHIP_LOGGER.info("Enter the City from where you will sell products: ");
-        city = scanner.nextLine();
+        while (true) {
+            PARTNERSHIP_LOGGER.info("Enter the City from where you will sell products: ");
+            city = scanner.nextLine();
+            if (city.matches("[A-Z][a-z]+")) {
+                break;
+            } else {
+                PARTNERSHIP_LOGGER.info("Please use a capital letter for the entering a city.");
+            }
+        }
 
         Seller seller = new Seller(nameSeller, contactSeller, city, setID);
 

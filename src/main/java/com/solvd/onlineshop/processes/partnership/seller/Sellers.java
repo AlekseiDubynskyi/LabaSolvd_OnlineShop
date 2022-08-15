@@ -8,6 +8,10 @@ import java.util.Set;
 public class Sellers implements ISeller {
     private Set<Seller> sellers = new LinkedHashSet<>();
 
+    public Sellers() {
+
+    }
+
     public Set<Seller> getSellers() {
         return sellers;
     }

@@ -1,5 +1,7 @@
 package com.solvd.onlineshop.mainshop;
 
+import com.solvd.onlineshop.processes.partnership.partner.Partner;
+import com.solvd.onlineshop.processes.partnership.partner.Partners;
 import com.solvd.onlineshop.processes.partnership.seller.Seller;
 import com.solvd.onlineshop.processes.partnership.seller.Sellers;
 import org.apache.logging.log4j.LogManager;
@@ -14,10 +16,26 @@ public class AllData {
     }
 
     private static void addSellers(){
+        Sellers seller = new Sellers();
 
+        Seller seller1 = new Seller("John", "+1-613-555-0107", "Ontario",
+                "9d623b5a-59db-435b-9c3e-0cfb2a149c5e");
+        Seller seller2 = new Seller("Mike", "+1-202-555-0114", "Boston",
+                "1d25be50-5fdf-4311-89eb-7767de46e361");
+
+        seller.addSeller(seller1);
+        seller.addSeller(seller2);
     }
 
     private static void addParners(){
+        Partners partner = new Partners();
 
+        Partner partner1 = new Partner("Roody", "+36 55 352 913",
+                "7c95c8b6-14b4-46c7-9aa6-555a6b1715af");
+        Partner partner2 = new Partner("Hanna", "+61 1900 654 321",
+                "455be649-8398-4dd5-adf6-c6023e980fa8");
+
+        partner.addPartner(partner1);
+        partner.addPartner(partner2);
     }
 }

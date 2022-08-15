@@ -22,11 +22,6 @@ public class Seller extends Company {
         this.city = city;
         this.sellerID = sellerID;
     }
-
-    public String getCity() {
-        return city;
-    }
-
     public void setCity(String city) {
         this.city = city;
     }

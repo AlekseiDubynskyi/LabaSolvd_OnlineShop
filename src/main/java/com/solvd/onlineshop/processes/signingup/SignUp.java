@@ -12,25 +12,58 @@ import java.util.*;
 public class SignUp {
     private static final Logger REGISTER_LOGGER = LogManager.getLogger(SignUp.class);
 
-    public static void Registration() {
+    public static User Registration() {
         Scanner scanner = new Scanner(System.in);
         User user = new User();
+        boolean firstName_Validation = false;
+        boolean lastName_Validation = false;
+        boolean password_Validation = false;
+        boolean email_Validation = false;
 
-        REGISTER_LOGGER.info("Enter First Name: ");
-        String firstName = scanner.nextLine();
-        user.setFirstName(firstName);
+        do {
+            REGISTER_LOGGER.info("Enter your first name: ");
+            String firstName = scanner.nextLine();
+            if (firstName.matches("[A-Z][a-z]+")) {
+                user.setFirstName(firstName);
+                firstName_Validation = true;
+            } else {
+                REGISTER_LOGGER.info("Please use a capital letter for the first letter of the first name.");
+            }
+        } while (firstName_Validation != true);
 
-        REGISTER_LOGGER.info("Enter Last Name: ");
-        String lastName = scanner.nextLine();
-        user.setLastName(lastName);
+        do {
+            REGISTER_LOGGER.info("Enter your last name: ");
+            String lastName = scanner.nextLine();
+            if (lastName.matches("[A-Z][a-z]+")) {
+                user.setLastName(lastName);
+                lastName_Validation = true;
+            } else {
+                REGISTER_LOGGER.info("Please use a capital letter for the first letter of the last name.");
+            }
+        } while (lastName_Validation != true);
 
-        REGISTER_LOGGER.info("Enter Password: ");
-        String password = scanner.nextLine();
-        user.setPassword(password);
+        do {
+            REGISTER_LOGGER.info("Enter the password: ");
+            String password = scanner.nextLine();
+            if (password.length() >= 8) {
+                user.setPassword(password);
+                password_Validation = true;
+            } else {
+                REGISTER_LOGGER.info("Password must have at least 8 characters.");
+            }
+        } while (password_Validation != true);
 
-        REGISTER_LOGGER.info("Enter your email: ");
-        String email = scanner.nextLine();
-        user.setEmail(email);
+        do {
+            REGISTER_LOGGER.info("Enter your email: ");
+            String email = scanner.nextLine();
+            if (email.matches("^[a-zA-Z\\d_#$%&’*+/=?^.-]+(?:\\.[a-zA-Z0-9_+&*-]+)" +
+                    "*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+                user.setEmail(email);
+                email_Validation = true;
+            } else {
+                REGISTER_LOGGER.info("Please enter the valid email address.");
+            }
+        } while (email_Validation != true);
 
         final String fromEmail = "onlineshop.sending.message@gmail.com"; //requires valid gmail id
         // correct password for gmail id, passwd creates on gmail account after two-factor authentication
@@ -58,6 +91,7 @@ public class SignUp {
                         ", have a good shopping in our store!\n" + "\n" +
                         "Sincerely, OnlineShop.");
 
-        REGISTER_LOGGER.info(user.toString());
+        return user;
     }
+
 }
