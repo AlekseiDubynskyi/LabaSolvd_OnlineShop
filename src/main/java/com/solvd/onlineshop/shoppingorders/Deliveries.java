@@ -1,6 +1,6 @@
 package com.solvd.onlineshop.shoppingorders;
 
-import com.solvd.onlineshop.exceptions.InvalidSendingDelivery;
+import com.solvd.onlineshop.exceptions.InvalidSendingDeliveryException;
 import com.solvd.onlineshop.interfaces.ISendingOrder;
 import com.solvd.onlineshop.mainshop.Product;
 import com.solvd.onlineshop.people.Customer;
@@ -103,8 +103,8 @@ public class Deliveries implements ISendingOrder {
                         customerID.getLastName() + " on " + date);
             else
                 DELIVERIES_LOGGER.info("Payment or transaction were not successful. Please try it again.");
-            throw new InvalidSendingDelivery("Something goes wrong");
-        } catch (InvalidSendingDelivery e) {
+            throw new InvalidSendingDeliveryException("Something goes wrong");
+        } catch (InvalidSendingDeliveryException e) {
             DELIVERIES_LOGGER.info("Order ID: " + orderID + ", customer ID: " + customerID.getFirstName() +
                     customerID.getLastName() + ", date: " + date);
         }

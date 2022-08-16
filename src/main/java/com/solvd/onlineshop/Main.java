@@ -1,6 +1,7 @@
 package com.solvd.onlineshop;
 
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
+import com.solvd.onlineshop.mainshop.OnlineShop;
 import com.solvd.onlineshop.processes.BuyingProducts;
 import com.solvd.onlineshop.processes.partnership.Partnership;
 import com.solvd.onlineshop.processes.signingup.SignUp;
