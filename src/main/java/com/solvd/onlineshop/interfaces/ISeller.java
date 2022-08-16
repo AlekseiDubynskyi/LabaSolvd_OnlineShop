@@ -1,6 +1,6 @@
 package com.solvd.onlineshop.interfaces;
 
-import com.solvd.onlineshop.processes.partnership.seller.Seller;
+import com.solvd.onlineshop.processes.partnership.Seller;
 
 import java.util.Set;
 

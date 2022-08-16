@@ -1,10 +1,14 @@
 package com.solvd.onlineshop.processes.signingup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String firstName;
     private String lastName;
     private String password;
     private String email;
+    private String giftCode;
 
     public String getFirstName() {
         return firstName;
@@ -38,8 +42,16 @@ public class User {
         this.email = email;
     }
 
+    public String getGiftCode() {
+        return giftCode;
+    }
+
+    public void setGiftCode(String giftCode) {
+        this.giftCode = giftCode;
+    }
+
     @Override
     public String toString() {
-        return "Dear " + firstName + " " + lastName + "!. Your account was successfully registered.";
+        return "Dear " + firstName + " " + lastName + "!. Your account was successfully registered";
     }
 }

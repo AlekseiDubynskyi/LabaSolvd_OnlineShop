@@ -1,17 +1,19 @@
 package com.solvd.onlineshop;
 
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
+import com.solvd.onlineshop.processes.BuyingProducts;
 import com.solvd.onlineshop.processes.partnership.Partnership;
 import com.solvd.onlineshop.processes.signingup.SignUp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
     private final static Logger MAIN_LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Integer choice;
         do {
             Scanner scanner = new Scanner(System.in);
@@ -29,7 +31,7 @@ public class Main {
                 if (choice == 1) {
                     SignUp.Registration();
                 } else if (choice == 2) {
-                    MAIN_LOGGER.info("You choose 2");
+                    BuyingProducts.Buying();
                 } else if (choice == 3) {
                     MAIN_LOGGER.info("You choose 3");
                 } else if (choice == 4) {

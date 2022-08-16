@@ -7,16 +7,18 @@ import java.util.Objects;
 
 public class ShoppingOrder {
     private String orderID;
-    private Customer customerID;
+    private String customerID;
+    private double totalPrice;
     private Date date;
 
     public ShoppingOrder() {
 
     }
 
-    public ShoppingOrder(String orderID, Customer customerID, Date date) {
+    public ShoppingOrder(String orderID, String customerID, double totalPrice, Date date) {
         this.orderID = orderID;
         this.customerID = customerID;
+        this.totalPrice = totalPrice;
         this.date = date;
     }
 
@@ -28,12 +30,20 @@ public class ShoppingOrder {
         this.orderID = orderID;
     }
 
-    public Customer getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(Customer customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Date getDate() {
@@ -49,13 +59,14 @@ public class ShoppingOrder {
         return "Order {" + '\''
                 + " order ID = " + orderID + '\''
                 + ", customer ID = " + customerID + '\''
+                + ", total price = " + totalPrice + '\''
                 + ", date = " + date +
                 '}';
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderID.hashCode(), customerID.hashCode(), date.hashCode());
+        return Objects.hash(orderID.hashCode(), customerID.hashCode(), totalPrice, date.hashCode());
     }
 
     @Override

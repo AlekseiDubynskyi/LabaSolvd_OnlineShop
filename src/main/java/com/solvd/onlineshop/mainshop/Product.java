@@ -1,28 +1,24 @@
 package com.solvd.onlineshop.mainshop;
 
-import com.solvd.onlineshop.processes.partnership.seller.Seller;
+import com.solvd.onlineshop.processes.partnership.Seller;
 
 import java.util.Objects;
-import java.util.Vector;
 
 public class Product {
     private String productID;
-    private Category categoryID;
     private String productName;
-    private Seller name;
-    private Vector<Category> categories = new Vector<Category>();
+    private String sellerName;
+    private double price;
 
     public Product() {
 
     }
 
-    public Product(String productID, Category categoryID, String productName, Seller name,
-                   Vector<Category> categories) {
+    public Product(String productID, String productName, String sellerName, double price) {
         this.productID = productID;
-        this.categoryID = categoryID;
         this.productName = productName;
-        this.name = name;
-        this.categories = categories;
+        this.sellerName = sellerName;
+        this.price = price;
     }
 
     public String getProductID() {
@@ -33,14 +29,6 @@ public class Product {
         this.productID = productID;
     }
 
-    public Category getCategoryID() {
-        return categoryID;
-    }
-
-    public void setCategoryID(Category categoryID) {
-        this.categoryID = categoryID;
-    }
-
     public String getProductName() {
         return productName;
     }
@@ -49,32 +37,25 @@ public class Product {
         this.productName = productName;
     }
 
-    public Seller getName() {
-        return name;
+    public String getSellerName() {
+        return sellerName;
     }
 
-    public void setName(Seller name) {
-        this.name = name;
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
 
-    public Vector<Category> getCategories() {
-        return categories;
-    }
 
-    public void setCategories(Vector<Category> categories) {
-        this.categories = categories;
-    }
 
     @Override
     public String toString() {
-        return "{Product: {Product ID: " + productID + ", product category: " + categoryID +
-                ", product name: " + productName + ", seller: " + name + ", category name: " + categories + "}";
+        return "Product: {Product ID: " + productID + ", product name: " + productName + ", seller: " + sellerName +
+                ", price ($): " + price + "}";
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productID.hashCode(), categoryID.hashCode(), productName.hashCode(),
-                name.hashCode(), getCategories().hashCode());
+        return Objects.hash(productID.hashCode(), productName.hashCode(), sellerName.hashCode(), price);
     }
 
     @Override

@@ -1,12 +1,15 @@
-package com.solvd.onlineshop.processes.partnership.seller;
+package com.solvd.onlineshop.processes.partnership;
 
 import com.solvd.onlineshop.companies.Company;
+import com.solvd.onlineshop.interfaces.ISeller;
 
-import java.util.Objects;
+import java.util.*;
 
-public class Seller extends Company {
+public class Seller extends Company implements ISeller {
     private String city;
     private String sellerID;
+    private ArrayList<Seller> sellerList = new ArrayList<Seller>();
+    private Set<Seller> sellers = new LinkedHashSet<>();
 
     public Seller() {
 
@@ -22,6 +25,7 @@ public class Seller extends Company {
         this.city = city;
         this.sellerID = sellerID;
     }
+
     public void setCity(String city) {
         this.city = city;
     }
@@ -32,6 +36,22 @@ public class Seller extends Company {
 
     public void setSellerID(String sellerID) {
         this.sellerID = sellerID;
+    }
+
+    public Set<Seller> getSellers() {
+        return sellers;
+    }
+
+    public void setSellers(Set<Seller> sellers) {
+        this.sellers = sellers;
+    }
+
+    public ArrayList<Seller> getSellerList() {
+        return sellerList;
+    }
+
+    public void setSellerList(ArrayList<Seller> sellerList) {
+        this.sellerList = sellerList;
     }
 
     @Override
@@ -51,4 +71,26 @@ public class Seller extends Company {
         Seller seller = (Seller) o;
         return hashCode() == seller.hashCode();
     }
+
+    @Override
+    public Seller addSeller(String name, String contact, String city, String sellerID) {
+        Seller seller = new Seller();
+        sellers.add(seller);
+        return seller;
+    }
+
+    @Override
+    public Seller addSeller(Seller seller) {
+        sellers.add(seller);
+        return seller;
+    }
+
+    @Override
+    public Set<Seller> deleteSeller(Seller seller) {
+        sellers.remove(seller);
+        return sellers;
+    }
+
+
+
 }

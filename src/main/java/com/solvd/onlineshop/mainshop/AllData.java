@@ -1,9 +1,7 @@
 package com.solvd.onlineshop.mainshop;
 
-import com.solvd.onlineshop.processes.partnership.partner.Partner;
-import com.solvd.onlineshop.processes.partnership.partner.Partners;
-import com.solvd.onlineshop.processes.partnership.seller.Seller;
-import com.solvd.onlineshop.processes.partnership.seller.Sellers;
+import com.solvd.onlineshop.processes.partnership.Partner;
+import com.solvd.onlineshop.processes.partnership.Seller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,12 +9,12 @@ public class AllData {
     private static final Logger DATA_LOGGER = LogManager.getLogger(AllData.class);
 
     public static void data(){
-        addSellers();
-        addParners();
+        addSeller();
+        addParner();
     }
 
-    private static void addSellers(){
-        Sellers seller = new Sellers();
+    private static void addSeller(){
+        Seller seller = new Seller();
 
         Seller seller1 = new Seller("John", "+1-613-555-0107", "Ontario",
                 "9d623b5a-59db-435b-9c3e-0cfb2a149c5e");
@@ -27,8 +25,8 @@ public class AllData {
         seller.addSeller(seller2);
     }
 
-    private static void addParners(){
-        Partners partner = new Partners();
+    private static void addParner(){
+        Partner partner = new Partner();
 
         Partner partner1 = new Partner("Roody", "+36 55 352 913",
                 "7c95c8b6-14b4-46c7-9aa6-555a6b1715af");
