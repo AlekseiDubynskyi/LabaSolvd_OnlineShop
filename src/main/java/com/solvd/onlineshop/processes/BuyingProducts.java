@@ -155,7 +155,7 @@ public class BuyingProducts {
 
 
             try {
-                if (choice == "") {
+                if (choice == "1") {
                     MakeOrder();
                     break;
                 } else if (choice == "2") {
