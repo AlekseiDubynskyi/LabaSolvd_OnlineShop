@@ -1,9 +1,8 @@
 package com.solvd.onlineshop.mainshop;
 
-import com.solvd.onlineshop.location.City;
+import com.solvd.onlineshop.enums.StarReview;
+import com.solvd.onlineshop.enums.WorkingDay;
 import com.solvd.onlineshop.companies.Company;
-import com.solvd.onlineshop.processes.BuyingProducts;
-import com.solvd.onlineshop.shoppingorders.Payment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -109,16 +108,16 @@ public class OnlineShop extends Company {
                 ONLINESHOP_LOGGER.info("Submit one star.");
                 break;
             case TWO_STARS:
-                ONLINESHOP_LOGGER.info("Submit two stars");
+                ONLINESHOP_LOGGER.info("Submit two stars.");
                 break;
             case THREE_STARS:
-                ONLINESHOP_LOGGER.info("Submit three stars");
+                ONLINESHOP_LOGGER.info("Submit three stars.");
                 break;
             case FOUR_STARS:
-                ONLINESHOP_LOGGER.info("Submit four stars");
+                ONLINESHOP_LOGGER.info("Submit four stars.");
                 break;
             case FIVE_STARS:
-                ONLINESHOP_LOGGER.info("Submit five stars");
+                ONLINESHOP_LOGGER.info("Submit five stars.");
                 break;
         }
     }

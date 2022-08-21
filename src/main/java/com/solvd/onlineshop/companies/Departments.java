@@ -1,8 +1,7 @@
 package com.solvd.onlineshop.companies;
 
-import com.solvd.onlineshop.Main;
+import com.solvd.onlineshop.enums.MainDepartments;
 import com.solvd.onlineshop.location.Country;
-import com.solvd.onlineshop.mainshop.OnlineShop;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -82,25 +81,32 @@ public class Departments extends Company {
     public void employeesQuantity() {
         switch (mainDepartments) {
             case NEWYORK:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 35.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: " +
+                        MainDepartments.valueOfEmployeesQuantity(35));
                 break;
             case WASHINGTON:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 41.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: " +
+                        MainDepartments.valueOfEmployeesQuantity(41));
                 break;
             case ONTARIO:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 11.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: "  +
+                        MainDepartments.valueOfEmployeesQuantity(11));
                 break;
             case LONDON:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 14.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: " +
+                        MainDepartments.valueOfEmployeesQuantity(14));
                 break;
             case KYIV:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 54.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: " +
+                        MainDepartments.valueOfEmployeesQuantity(54));
                 break;
             case WARSHAVA:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 38.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: " +
+                        MainDepartments.valueOfEmployeesQuantity(38));
                 break;
             case PARIS:
-                DEPARTMENT_LOGGER.info("The quantity of employees is 22.");
+                DEPARTMENT_LOGGER.info("The quantity of employees is: " +
+                        MainDepartments.valueOfEmployeesQuantity(22));
                 break;
         }
     }

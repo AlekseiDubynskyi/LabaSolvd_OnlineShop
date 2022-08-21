@@ -1,4 +1,4 @@
-package com.solvd.onlineshop.mainshop;
+package com.solvd.onlineshop.enums;
 
 public enum WorkingDay {
     MONDAY,
@@ -7,5 +7,5 @@ public enum WorkingDay {
     THURSDAY,
     FRIDAY,
     SATURDAY,
-    SUNDAY
+    SUNDAY;
 }
