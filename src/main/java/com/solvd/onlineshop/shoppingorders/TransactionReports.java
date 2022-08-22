@@ -118,13 +118,15 @@ public class TransactionReports implements ITransactionSuccess {
     }
 
     @Override
-    public boolean transactionSuccess (TransactionReports transactionReports) {
+    public boolean transactionSuccess(TransactionReports transactionReports) {
         try {
-            if (transactionReports.success)
+            if (transactionReports.success) {
                 REPORTS_LOGGER.info("Transaction completed successfully. Transaction ID is: " +
                         getReportID());
-            else
+            } else {
                 REPORTS_LOGGER.info("Transaction was not successful. Please try again.");
+                return false;
+            }
             throw new InvalidTransactionException("Something goes wrong");
         } catch (InvalidTransactionException e) {
             REPORTS_LOGGER.info("Report ID: " + reportID + ", customer ID: " + customerID + ", order ID" + orderID +

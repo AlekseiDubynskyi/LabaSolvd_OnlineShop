@@ -1,14 +1,15 @@
 package com.solvd.onlineshop;
 
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
-import com.solvd.onlineshop.mainshop.OnlineShop;
-import com.solvd.onlineshop.processes.BuyingProducts;
+import com.solvd.onlineshop.mainshop.WelcomeMessage;
+import com.solvd.onlineshop.processes.buyingproducts.BuyingProducts;
 import com.solvd.onlineshop.processes.partnership.Partnership;
 import com.solvd.onlineshop.processes.signingup.SignUp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.Scanner;
 
 public class Main {
@@ -16,6 +17,20 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Integer choice;
+
+        // Reflection usage
+        WelcomeMessage welcomeMessage = new WelcomeMessage();
+        String greetings = null;
+        MAIN_LOGGER.info(greetings);
+        try {
+            Field field = welcomeMessage.getClass().getDeclaredField("greetings");
+            field.setAccessible(true);
+            greetings = (String) field.get(welcomeMessage);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        MAIN_LOGGER.info(greetings);
+
         do {
             Scanner scanner = new Scanner(System.in);
 

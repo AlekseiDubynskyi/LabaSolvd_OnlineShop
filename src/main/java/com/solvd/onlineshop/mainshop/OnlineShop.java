@@ -3,6 +3,7 @@ package com.solvd.onlineshop.mainshop;
 import com.solvd.onlineshop.enums.StarReview;
 import com.solvd.onlineshop.enums.WorkingDay;
 import com.solvd.onlineshop.companies.Company;
+import com.solvd.onlineshop.people.Employees;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

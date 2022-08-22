@@ -9,9 +9,14 @@ public class Product {
     private String productName;
     private String sellerName;
     private double price;
+    private int number;
 
     public Product() {
 
+    }
+
+    public Product(String productID) {
+        this.productID = productID;
     }
 
     public Product(String productID, String productName, String sellerName, double price) {
@@ -46,10 +51,9 @@ public class Product {
     }
 
 
-
     @Override
     public String toString() {
-        return "\n" + "Product: {Product ID: " + productID + ", product name: " + productName + ", seller: " + sellerName +
+        return "Product: {Product ID: " + productID + ", product name: " + productName + ", seller: " + sellerName +
                 ", price ($): " + price + "}";
     }
 
