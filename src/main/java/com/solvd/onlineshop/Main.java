@@ -21,7 +21,6 @@ public class Main {
         // Reflection usage
         WelcomeMessage welcomeMessage = new WelcomeMessage();
         String greetings = null;
-        MAIN_LOGGER.info(greetings);
         try {
             Field field = welcomeMessage.getClass().getDeclaredField("greetings");
             field.setAccessible(true);
