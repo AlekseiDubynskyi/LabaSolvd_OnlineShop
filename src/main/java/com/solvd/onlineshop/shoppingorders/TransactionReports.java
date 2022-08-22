@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Date;
 import java.util.Objects;
 
-public class TransactionReports implements ITransactionSuccess {
+public class TransactionReports {
     private final static Logger REPORTS_LOGGER = LogManager.getLogger(TransactionReports.class);
     private String reportID;
     private Customer customerID;
@@ -117,21 +117,21 @@ public class TransactionReports implements ITransactionSuccess {
         return hashCode() == transactionReports.hashCode();
     }
 
-    @Override
-    public boolean transactionSuccess(TransactionReports transactionReports) {
-        try {
-            if (transactionReports.success) {
-                REPORTS_LOGGER.info("Transaction completed successfully. Transaction ID is: " +
-                        getReportID());
-            } else {
-                REPORTS_LOGGER.info("Transaction was not successful. Please try again.");
-                return false;
-            }
-            throw new InvalidTransactionException("Something goes wrong");
-        } catch (InvalidTransactionException e) {
-            REPORTS_LOGGER.info("Report ID: " + reportID + ", customer ID: " + customerID + ", order ID" + orderID +
-                    ", success: " + success);
-        }
-        return false;
-    }
+//    public boolean transactionSuccess(TransactionReports transactionReports) {
+//        try {
+//            if (transactionReports.success) {
+//                REPORTS_LOGGER.info("Transaction completed successfully. Transaction ID is: " +
+//                        getReportID());
+//            } else {
+//                REPORTS_LOGGER.info("Transaction was not successful. Please try again.");
+//                return false;
+//            }
+//            throw new InvalidTransactionException("Something goes wrong");
+//        } catch (InvalidTransactionException e) {
+//            REPORTS_LOGGER.info("Report ID: " + reportID + ", customer ID: " + customerID + ", order ID" + orderID +
+//                    ", success: " + success);
+//        }
+//        return false;
+//    }
+
 }
