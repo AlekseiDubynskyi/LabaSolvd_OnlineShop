@@ -210,10 +210,9 @@ public class PayForProducts {
                         enteredGiftCode = String.valueOf(giftcode);
                         PAYFORPRODUCTS_LOGGER.info("The gift code is added to your order. You have a 3% discount!");
                         totalPrice = totalPrice - totalPrice * 0.03;
-                        notMatchGiftCode = false;
                     }
-                }
-                if (notMatchGiftCode = true) {
+                } if (true) {
+                } else if (notMatchGiftCode = true ) {
                     PAYFORPRODUCTS_LOGGER.info("The gift code does not exist. Choose the next step: " + "\n" +
                             "1) Enter the gift code one more time." + "\n" +
                             "2) Pay for order without gift code.");
@@ -236,3 +235,4 @@ public class PayForProducts {
         } while (!notMatchGiftCode);
     }
 }
+
