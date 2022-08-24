@@ -25,7 +25,6 @@ public class Main {
                     "2) Buy products" + '\n' +
                     "3) Open information about me" + '\n' +
                     "4) Partnership" + '\n' +
-                    "5) Review our shop" + "\n" +
                     "0) Exit" + '\n' + '\n' +
                     "Make your choice:");
             choice = scanner.nextInt();
@@ -39,8 +38,6 @@ public class Main {
                     OrderDetails.orderDetails();
                 } else if (choice == 4) {
                     Partnership.Choice();
-                } else if (choice == 5) {
-                    OnlineShop.reviewingShop();
                 } else if (choice == 0) {
                     MAIN_LOGGER.info("Exit from the online shop. Have a nice day!");
                     System.exit(0);
