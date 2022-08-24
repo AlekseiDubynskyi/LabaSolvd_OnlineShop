@@ -1,6 +1,6 @@
 package com.solvd.onlineshop.processes.buyingproducts;
 
-import com.solvd.onlineshop.mainshop.Main;
+import com.solvd.onlineshop.mainshop.MainPage;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +32,7 @@ public class OrderDetails {
             }
         } while (!showOrder);
         try {
-            Main.mainPage();
+            MainPage.mainPage();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

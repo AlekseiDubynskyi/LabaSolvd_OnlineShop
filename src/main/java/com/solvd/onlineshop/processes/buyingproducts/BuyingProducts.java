@@ -2,7 +2,6 @@ package com.solvd.onlineshop.processes.buyingproducts;
 
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
 import com.solvd.onlineshop.exceptions.InvalidEnteringException;
-import com.solvd.onlineshop.mainshop.Product;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,12 +24,12 @@ public class BuyingProducts {
 
             try {
                 if (choice == 1) {
-                    ProductsDatabase.products();
-                    ProductsDatabase.showProducts();
+                    PayForProducts.products();
+                    PayForProducts.showProducts();
                     buyingProcess();
                     break;
                 } else if (choice == 2) {
-                    ProductsDatabase.addingProductsToCart();
+                    PayForProducts.addingProductsToCart();
                     break;
                 } else if (choice == 0) {
                     BUYING_LOGGER.info("Exit from the Buying page. Now you are at the Home page!");
@@ -59,7 +58,7 @@ public class BuyingProducts {
 
             try {
                 if (choice == 1) {
-                    ProductsDatabase.addingProductsToCart();
+                    PayForProducts.addingProductsToCart();
                     break;
                 } else if (choice == 2) {
                     buying();

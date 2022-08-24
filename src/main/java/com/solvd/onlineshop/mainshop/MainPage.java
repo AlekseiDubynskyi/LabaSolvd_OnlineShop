@@ -11,8 +11,8 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
-    private final static Logger MAIN_LOGGER = LogManager.getLogger(Main.class);
+public class MainPage {
+    private final static Logger MAIN_LOGGER = LogManager.getLogger(MainPage.class);
 
     public static void mainPage() throws IOException {
         Integer choice;

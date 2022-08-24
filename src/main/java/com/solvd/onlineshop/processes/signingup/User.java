@@ -1,13 +1,5 @@
 package com.solvd.onlineshop.processes.signingup;
 
-import com.solvd.onlineshop.mainshop.Product;
-import com.solvd.onlineshop.processes.buyingproducts.ProductsDatabase;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-
 public class User {
     private String firstName;
     private String lastName;

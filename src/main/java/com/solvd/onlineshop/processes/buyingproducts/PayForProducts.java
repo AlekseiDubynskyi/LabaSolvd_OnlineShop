@@ -2,6 +2,7 @@ package com.solvd.onlineshop.processes.buyingproducts;
 
 import com.solvd.onlineshop.exceptions.InvalidChoiceException;
 import com.solvd.onlineshop.exceptions.InvalidEnteringException;
+import com.solvd.onlineshop.mainshop.GiftCode;
 import com.solvd.onlineshop.mainshop.Product;
 import com.solvd.onlineshop.people.Customer;
 import com.solvd.onlineshop.shoppingorders.Payment;
@@ -13,11 +14,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class ProductsDatabase {
+import static com.solvd.onlineshop.processes.signingup.SignUp.GIFTCODES;
+
+public class PayForProducts {
     private static double totalPrice = 0;
     private final static List<String> BASKET = new ArrayList<String>();
-    private final static Logger DATABASE_LOGGER = LogManager.getLogger(ProductsDatabase.class);
-
+    private final static Logger PAYFORPRODUCTS_LOGGER = LogManager.getLogger(PayForProducts.class);
     public final static List<Product> PRODUCTS = new ArrayList<Product>();
 
     public static void products() {
@@ -39,12 +41,12 @@ public class ProductsDatabase {
     }
 
     public static void showProducts() {
-        PRODUCTS.forEach(product -> DATABASE_LOGGER.info(product));
+        PRODUCTS.forEach(product -> PAYFORPRODUCTS_LOGGER.info(product));
     }
 
     public static void addingProductsToCart() {
         products();
-        DATABASE_LOGGER.info("Enter the ID of wished product:");
+        PAYFORPRODUCTS_LOGGER.info("Enter the ID of wished product:");
         findingByID();
         continueShopping();
     }
@@ -59,21 +61,21 @@ public class ProductsDatabase {
                 for (Product product : PRODUCTS) {
                     if (wishedProduct.equalsIgnoreCase(String.valueOf(product.getProductID()))) {
                         wishedProduct = String.valueOf(product);
-                        DATABASE_LOGGER.info("Your product is added to the shopping cart: " + wishedProduct);
+                        PAYFORPRODUCTS_LOGGER.info("Your product is added to the shopping cart: " + wishedProduct);
                         BASKET.add(wishedProduct);
                         totalPrice = totalPrice + product.getPrice();
-                        DATABASE_LOGGER.info("Total price for the order is: $" + totalPrice);
+                        PAYFORPRODUCTS_LOGGER.info("Total price for the order is: $" + totalPrice);
                         notMatchID = false;
                     }
                 }
                 if (notMatchID = true) {
                     continueShopping();
                 } else {
-                    DATABASE_LOGGER.info("Invalid ID number. Please try again.");
+                    PAYFORPRODUCTS_LOGGER.info("Invalid ID number. Please try again.");
                     findingByID();
                 }
             } catch (InvalidEnteringException e) {
-                DATABASE_LOGGER.error(e);
+                PAYFORPRODUCTS_LOGGER.error(e);
             }
         } while (!notMatchID);
     }
@@ -81,10 +83,9 @@ public class ProductsDatabase {
     public static void continueShopping() {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
-        boolean notMatchID = true;
 
         do {
-            DATABASE_LOGGER.info("Do you want to continue shopping?" + "\n" +
+            PAYFORPRODUCTS_LOGGER.info("Do you want to continue shopping?" + "\n" +
                     "1) Yes. Add some more products to the shopping cart." + "\n" +
                     "2) No. Pay for the order.");
             choice = scanner.nextInt();
@@ -92,15 +93,15 @@ public class ProductsDatabase {
                 if (choice == 1) {
                     addingProductsToCart();
                 } else if (choice == 2) {
-                    DATABASE_LOGGER.info("Products in your shopping cart: ");
-                    BASKET.forEach(product -> DATABASE_LOGGER.info(product));
+                    PAYFORPRODUCTS_LOGGER.info("Products in your shopping cart: ");
+                    BASKET.forEach(product -> PAYFORPRODUCTS_LOGGER.info(product));
                     paymentOrder();
                     break;
                 } else {
                     throw new InvalidChoiceException("Invalid entering data. Please enter one of the provided numbers.");
                 }
             } catch (InvalidChoiceException e) {
-                DATABASE_LOGGER.error(e);
+                PAYFORPRODUCTS_LOGGER.error(e);
             }
         } while (choice != 0);
     }
@@ -113,37 +114,39 @@ public class ProductsDatabase {
         String customerID;
         String addressCustomer;
         String paymentID = UUID.randomUUID().toString();
+
         Calendar date = Calendar.getInstance();
         List<String> customerData = new ArrayList<>();
 
         File customerFile = new File("src/main/resources/payment.txt");
-        DATABASE_LOGGER.info("PAYING FOR THE ORDER.");
+        PAYFORPRODUCTS_LOGGER.info("PAYING FOR THE ORDER.");
 
         Customer customer = new Customer();
 
-        DATABASE_LOGGER.info("Enter your ID:");
+        PAYFORPRODUCTS_LOGGER.info("Enter your ID:");
         customerID = scanner.nextLine();
         customer.setCustomerID(customerID);
         customerData.add("CustomerID: " + customer.getCustomerID());
-        DATABASE_LOGGER.info("Enter your address:");
+        PAYFORPRODUCTS_LOGGER.info("Enter your address:");
         addressCustomer = scanner.nextLine();
         customer.setAddress(addressCustomer);
         customerData.add("Customer address: " + customer.getAddress());
         do {
-            DATABASE_LOGGER.info("Enter your card number:");
+            PAYFORPRODUCTS_LOGGER.info("Enter your card number:");
             cardNumber = scanner.nextLine();
             if (cardNumber.matches("(^4[0-9]{12}(?:[0-9]{3})?$)|(^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$)|(3[47][0-9]{13})|(^3(?:0[0-5]|[68][0-9])[0-9]{11}$)|(^6(?:011|5[0-9]{2})[0-9]{12}$)|(^(?:2131|1800|35\\d{3})\\d{11}$)")) {
                 customer.setCardNumber(cardNumber);
                 customerData.add("Card numbers: " + customer.getCardNumber());
                 cardValidation = true;
             } else {
-                DATABASE_LOGGER.info("The card number is invalid. The card must have 16 numbers.");
+                PAYFORPRODUCTS_LOGGER.info("The card number is invalid. The card must have 16 numbers.");
             }
         } while (cardValidation != true);
 
         customerData.add("Date: " + date.getTime());
-        customerData.add("Total price: $" + totalPrice);
         customerData.add("Ordered products:" + BASKET);
+        discount();
+        customerData.add("Total price: $" + totalPrice);
 
         new Payment(paymentID, customerID, new Date(), true);
 
@@ -154,15 +157,82 @@ public class ProductsDatabase {
         }
 
         do {
-            DATABASE_LOGGER.info("Total price to pay: $" + totalPrice + ". Confirm your paying for the order (write 'Confirm')");
+            PAYFORPRODUCTS_LOGGER.info("Total price to pay: $" + totalPrice + ". Confirm your paying for the order (write 'Confirm')");
             String confirmation = scanner.nextLine();
             if (Objects.equals(confirmation, "Confirm")) {
                 confirmPaying = true;
                 OrderDetails.orderDetails();
                 break;
             } else {
-                DATABASE_LOGGER.info("Please write 'Confirm' to confirm your order.");
+                PAYFORPRODUCTS_LOGGER.info("Please write 'Confirm' to confirm your order.");
             }
         } while (confirmPaying != true);
+    }
+
+    public static void discount() {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            PAYFORPRODUCTS_LOGGER.info("Total price to pay: $" + totalPrice + ". If you have a gift code, " +
+                    "you can enter it for 3% discount. Do you want to use a gift code?" + "\n" +
+                    "1) Yes" + "\n" +
+                    "2) No");
+            choice = scanner.nextInt();
+
+            try {
+                if (choice == 1) {
+                    matchGiftCode();
+                    break;
+                } else if (choice == 2) {
+                    break;
+                } else {
+                    PAYFORPRODUCTS_LOGGER.info("Invalid entering data. Please enter one of the provided numbers.");
+                    discount();
+                }
+            } catch (InvalidEnteringException e) {
+                PAYFORPRODUCTS_LOGGER.error(e);
+            }
+        } while (choice != 2);
+    }
+
+    public static void matchGiftCode() {
+        Scanner scanner = new Scanner(System.in);
+        boolean notMatchGiftCode = true;
+        int choice;
+        PAYFORPRODUCTS_LOGGER.info("Please enter your gift code:");
+        String enteredGiftCode = scanner.nextLine();
+
+        do {
+            try {
+                for (GiftCode giftcode : GIFTCODES) {
+                    if (enteredGiftCode.equalsIgnoreCase(giftcode.getGiftCode())) {
+                        enteredGiftCode = String.valueOf(giftcode);
+                        PAYFORPRODUCTS_LOGGER.info("The gift code is added to your order. You have a 3% discount!");
+                        totalPrice = totalPrice - totalPrice * 0.03;
+                        notMatchGiftCode = false;
+                    }
+                }
+                if (notMatchGiftCode = true) {
+                    PAYFORPRODUCTS_LOGGER.info("The gift code does not exist. Choose the next step: " + "\n" +
+                            "1) Enter the gift code one more time." + "\n" +
+                            "2) Pay for order without gift code.");
+                    choice = scanner.nextInt();
+                    try {
+                        if (choice == 1) {
+                            matchGiftCode();
+                        } else if (choice == 2) {
+                            break;
+                        } else {
+                            throw new InvalidChoiceException("Invalid entering data. Please enter one of the provided numbers.");
+                        }
+                    } catch (InvalidChoiceException e) {
+                        PAYFORPRODUCTS_LOGGER.error(e);
+                    }
+                }
+            } catch (InvalidEnteringException e) {
+                PAYFORPRODUCTS_LOGGER.error(e);
+            }
+        } while (!notMatchGiftCode);
     }
 }

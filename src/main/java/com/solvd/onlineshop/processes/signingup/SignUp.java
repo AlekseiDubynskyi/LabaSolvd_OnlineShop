@@ -1,5 +1,6 @@
 package com.solvd.onlineshop.processes.signingup;
 
+import com.solvd.onlineshop.mainshop.GiftCode;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class SignUp {
+    public static final List<GiftCode> GIFTCODES = new ArrayList<GiftCode>();
     private static final Logger REGISTER_LOGGER = LogManager.getLogger(SignUp.class);
 
     public static User Registration() throws IOException {
@@ -98,6 +100,7 @@ public class SignUp {
         user.setGiftCode(StringUtils.upperCase(StringUtils.truncate(user.getFirstName(), 2)) + "-" +
                 StringUtils.upperCase(StringUtils.truncate(user.getLastName(), 2)) + "-" +
                 generateGiftCode);
+        GIFTCODES.add(new GiftCode(user.getGiftCode()));
 
         Session session = Session.getDefaultInstance(props, auth);
         EmailUtil.sendEmail(session, toEmail, "Successfully registration on OnlineShop project!",
@@ -106,7 +109,6 @@ public class SignUp {
                         ", your gift code is: " + user.getGiftCode() +
                         ". Have a good shopping in our store!\n" + "\n" +
                         "Sincerely, OnlineShop.");
-
 
         REGISTER_LOGGER.info("Dear " + user.getFirstName() + " " + user.getLastName() + ". Your gift code is: " +
                 user.getGiftCode());
