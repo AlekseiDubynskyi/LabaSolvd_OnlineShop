@@ -1,7 +1,5 @@
 package com.solvd.onlineshop.enums;
 
-import com.solvd.onlineshop.Main;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -8,12 +8,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class OnlineShop extends Company {
     private final static Logger ONLINESHOP_LOGGER = LogManager.getLogger(OnlineShop.class);
     private String licenseID;
     private WorkingDay workingDay;
-    private StarReview starReview;
+    private static StarReview starReview;
 
     public OnlineShop() {
     }
@@ -103,22 +104,22 @@ public class OnlineShop extends Company {
         }
     }
 
-    public void reviewingShop() {
+    public static void reviewingShop() {
         switch (starReview){
             case ONE_STAR:
-                ONLINESHOP_LOGGER.info("Submit one star.");
+                ONLINESHOP_LOGGER.info("Submitting one star.");
                 break;
             case TWO_STARS:
-                ONLINESHOP_LOGGER.info("Submit two stars.");
+                ONLINESHOP_LOGGER.info("Submitting two stars.");
                 break;
             case THREE_STARS:
-                ONLINESHOP_LOGGER.info("Submit three stars.");
+                ONLINESHOP_LOGGER.info("Submitting three stars.");
                 break;
             case FOUR_STARS:
-                ONLINESHOP_LOGGER.info("Submit four stars.");
+                ONLINESHOP_LOGGER.info("Submitting four stars.");
                 break;
             case FIVE_STARS:
-                ONLINESHOP_LOGGER.info("Submit five stars.");
+                ONLINESHOP_LOGGER.info("Submitting five stars.");
                 break;
         }
     }

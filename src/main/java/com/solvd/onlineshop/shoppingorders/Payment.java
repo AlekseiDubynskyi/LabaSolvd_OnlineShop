@@ -11,8 +11,8 @@ import java.util.Objects;
 
 public class Payment implements IPaymentSuccess {
     private final static Logger PAYMENT_LOGGER = LogManager.getLogger(Payment.class);
-    private int paymentID;
-    private Customer customerID;
+    private String paymentID;
+    private String customerID;
     private Date date;
     private boolean success;
 
@@ -20,26 +20,26 @@ public class Payment implements IPaymentSuccess {
 
     }
 
-    public Payment(int paymentID, Customer customerID, Date date, boolean success) {
+    public Payment(String paymentID, String customerID, Date date, boolean success) {
         this.paymentID = paymentID;
         this.customerID = customerID;
         this.date = date;
         this.success = success;
     }
 
-    public int getPaymentID() {
+    public String getPaymentID() {
         return paymentID;
     }
 
-    public void setPaymentID(int paymentID) {
+    public void setPaymentID(String paymentID) {
         this.paymentID = paymentID;
     }
 
-    public Customer getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(Customer customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
 
@@ -71,7 +71,7 @@ public class Payment implements IPaymentSuccess {
 
     @Override
     public int hashCode() {
-        return Objects.hash(paymentID, getCustomerID().hashCode(), date.hashCode(), success);
+        return Objects.hash(getPaymentID().hashCode(), getCustomerID().hashCode(), date.hashCode(), success);
     }
 
     @Override

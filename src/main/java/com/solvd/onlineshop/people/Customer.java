@@ -11,19 +11,22 @@ public class Customer extends Person implements IBuy, IOrder {
     private final static Logger CUSTOMER_LOGGER = LogManager.getLogger(Customer.class);
     private String customerID;
     private String address;
+    private String cardNumber;
 
     public Customer() {
     }
 
-    public Customer(String customerID, String address) {
+    public Customer(String customerID, String address, String cardNumber) {
         this.customerID = customerID;
         this.address = address;
+        this.cardNumber = cardNumber;
     }
 
-    public Customer(String firstName, String lastName, String contact, String customerID, String address) {
+    public Customer(String firstName, String lastName, String contact, String customerID, String address, String cardNumber) {
         super(firstName, lastName, contact);
         this.customerID = customerID;
         this.address = address;
+        this.cardNumber = cardNumber;
     }
 
     public String getCustomerID() {
@@ -42,16 +45,24 @@ public class Customer extends Person implements IBuy, IOrder {
         this.address = address;
     }
 
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
     @Override
     public String toString() {
         return "{Customer: " + getFirstName() + " " + getLastName() + ", contact: " + getContact() +
-                ", customer ID: " + customerID + ", address: " + address + "}";
+                ", customer ID: " + customerID + ", address: " + address + ", card number: " + cardNumber + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getFirstName().hashCode(), getLastName().hashCode(), getContact().hashCode(),
-                customerID.hashCode(), address.hashCode());
+                customerID.hashCode(), address.hashCode(), cardNumber.hashCode());
     }
 
     @Override

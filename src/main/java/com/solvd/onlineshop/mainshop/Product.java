@@ -1,15 +1,19 @@
 package com.solvd.onlineshop.mainshop;
 
+import com.solvd.onlineshop.processes.buyingproducts.ProductsDatabase;
 import com.solvd.onlineshop.processes.partnership.Seller;
+import org.apache.commons.io.file.PathUtils;
 
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Product {
     private String productID;
     private String productName;
     private String sellerName;
     private double price;
-    private int number;
+
 
     public Product() {
 
@@ -50,6 +54,13 @@ public class Product {
         this.sellerName = sellerName;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
