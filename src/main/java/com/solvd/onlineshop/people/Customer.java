@@ -4,10 +4,12 @@ import com.solvd.onlineshop.interfaces.IBuy;
 import com.solvd.onlineshop.interfaces.IOrder;
 
 import java.util.Objects;
+import java.util.Scanner;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Customer extends Person implements IBuy, IOrder {
+public class Customer extends Person implements IOrder {
     private final static Logger CUSTOMER_LOGGER = LogManager.getLogger(Customer.class);
     private String customerID;
     private String address;
@@ -73,9 +75,18 @@ public class Customer extends Person implements IBuy, IOrder {
         return hashCode() == customer.hashCode();
     }
 
-    @Override
-    public void buy(Customer customer) {
-        CUSTOMER_LOGGER.info("I'm going to buy some products");
+    public static void execute(IBuy customer) {
+        customer.buy();
+    }
+
+    public static void usageOfInterfaces() {
+         execute(new IBuy() {
+             @Override
+             public void buy() {
+                 System.out.println("I'm going to buy some products");
+             }
+
+        });
     }
 
     @Override
