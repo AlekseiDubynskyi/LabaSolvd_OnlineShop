@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class TestPool {
-    private static final int PULL_QUANTITY = 2;
+    private static final int PULL_QUANTITY = 3;
 
     public static void main(String[] args) {
         Runnable connectionPool1 = new Pool("Pool 1");
