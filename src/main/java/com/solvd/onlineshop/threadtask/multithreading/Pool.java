@@ -1,11 +1,11 @@
-package com.solvd.onlineshop.pool;
+package com.solvd.onlineshop.threadtask.multithreading;
 
 import java.time.LocalDateTime;
 
-public class Task implements Runnable {
+public class Pool implements Runnable {
     private String name;
 
-    public Task(String name) {
+    public Pool(String name) {
         this.name = name;
     }
 
@@ -15,9 +15,9 @@ public class Task implements Runnable {
             for (int i = 0; i <= 4; i++) {
                 if (i == 0) {
                     System.out.println("Initialization time for"
-                            + " the task name: " + name + " = " + LocalDateTime.now());
+                            + " the: " + name + " = " + LocalDateTime.now());
                 } else {
-                    System.out.println("Executing time for the task name: " +
+                    System.out.println("Executing time for the: " +
                             name + " is " + LocalDateTime.now() + " for the " + i);
                 }
                 Thread.sleep(1000);

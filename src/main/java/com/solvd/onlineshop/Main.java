@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 
 public class Main {
     private final static Logger LOGGER = LogManager.getLogger(MainPage.class);
+
     public static void main(String args[]) {
         // Reflection usage
         WelcomeMessage welcomeMessage = new WelcomeMessage();
